@@ -21,47 +21,6 @@
         }
     </script>
     <style>
-         .form-container {
-        background-color: white;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin: 20px 0;
-    }
-
-    .form-container h2 {
-        margin-top: 0;
-        color: #003366;
-    }
-
-    .form-container label {
-        display: block;
-        margin-top: 10px;
-        margin-bottom: 5px;
-        color: #555;
-    }
-
-    .form-container input, .form-container select {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-
-    .form-container button {
-        background-color: #007bff;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .form-container button:hover {
-        background-color: #0056b3;
     }
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -357,34 +316,6 @@
                <li>Preguntar por Francisco Félix si vienen por vacante de Trabajador de Patio.</li>    
             </ul>
         </div>
-                </div>
-        <div class="form-container">
-    <h2>Para futuras vacantes</h2>
-    <form action="procesar_formulario.php" method="post">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" required>
-
-        <label for="telefono">Número de Teléfono</label>
-        <input type="tel" id="telefono" name="telefono" required>
-
-        <label for="vacante">Vacante</label>
-        <input type="text" id="vacane" name="vacante" required>
-
-        <label for="sucursal">Sucursal</label>
-        <select id="sucursal" name="sucursal" required>
-            <option value="">Seleccione una sucursal</option>
-            <option value="los_mochis">Los Mochis</option>
-            <option value="cabo_san_lucas">Cabo San Lucas</option>
-            <option value="la_paz">La Paz</option>
-            <option value="san_jose_del_cabo">San José del Cabo</option>
-            <option value="culiacan">Culiacán</option>
-            <option value="el_fuerte">El Fuerte</option>
-            <option value="juan_jose_rios">Juan José Rios</option>
-            <option value="tamaral">El Tamaral</option>
-        </select>
-        <button type="submit">Enviar</button>
-    </form>
-</div>
     </section>
     <footer>
         <div class="container">
