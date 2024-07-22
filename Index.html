@@ -21,6 +21,48 @@
         }
     </script>
     <style>
+         .form-container {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+    }
+
+    .form-container h2 {
+        margin-top: 0;
+        color: #003366;
+    }
+
+    .form-container label {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    .form-container input, .form-container select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .form-container button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .form-container button:hover {
+        background-color: #0056b3;
+    }
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
@@ -320,6 +362,38 @@
         <div class="container">
             <p>© 2024 Aceros del Pacífico. Todos los derechos reservados.</p>
         </div>
+        <div class="form-container">
+    <h2>Formulario de Solicitud</h2>
+    <form action="procesar_formulario.php" method="post">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="telefono">Número de Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" required>
+
+        <label for="vacante">Vacante que le interesa</label>
+        <select id="vacante" name="vacante" required>
+            <option value="">Seleccione una vacante</option>
+            <option value="chofer">Chófer</option>
+            <option value="ayudante_patio">Ayudante de Patio</option>
+            <option value="auxiliar_general">Auxiliar en General</option>
+            <option value="gerente_tienda">Gerente de Tienda</option>
+        </select>
+
+        <label for="sucursal">Sucursal</label>
+        <select id="sucursal" name="sucursal" required>
+            <option value="">Seleccione una sucursal</option>
+            <option value="los_mochis">Los Mochis</option>
+            <option value="cabo_san_lucas">Cabo San Lucas</option>
+            <option value="la_paz">La Paz</option>
+            <option value="san_jose_del_cabo">San José del Cabo</option>
+            <option value="culiacan">Culiacán</option>
+        </select>
+
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
     </footer>
 </body>
 </html>
