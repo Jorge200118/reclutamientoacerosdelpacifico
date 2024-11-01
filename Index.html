@@ -1,89 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vacantes Disponibles - Aceros del Pacífico</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <script>
-        const telefono = "6682191668";
-        function generarEnlaceWhatsapp(mensaje) {
-            return `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vacantes Disponibles - Aceros del Pacífico</title>
+  <!-- Enlace a Font Awesome para íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Enlace a Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+/* Diseño Minimalista Mejorado */
 
-        function toggleVisibility(id) {
-            const element = document.getElementById(id);
-            if (element.style.display === "none" || element.style.display === "") {
-                element.style.display = "block";
-            } else {
-                element.style.display = "none";
-            }
-        }
-    </script>
-    <style>
-    :root {
-        --primary-color: #0d1c59;
-        --secondary-color: #007bff;
-        --accent-color: #003366;
-        --background-color: #f9f9f9;
-        --text-color: #333;
-        --muted-text-color: #555;
-        --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        --border-radius: 8px;
-        --border-color: #ddd;
-        --transition-duration: 0.3s;
-        --hover-scale: 1.05;
-        --line-height: 1.25; /* Ajuste del interlineado */
-        --paragraph-margin-bottom: 8px; /* Ajuste del margen inferior de los párrafos */
-    }
+/* Definir variables globales */
+:root {
+  --primary-color: #0d1c59;
+  --secondary-color: #007bff;
+  --accent-color: #003366;
+  --background-color: #f9f9f9;
+  --text-color: #333;
+  --muted-text-color: #555;
+  --white-color: #ffffff;
+  --font-family: 'Helvetica Neue', sans-serif;
+  --font-size-large: 2em;
+  --font-size-medium: 1.25em;
+  --font-size-small: 1em;
+  --transition-duration: 0.3s;
+}
 
-    body {
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: var(--background-color);
-        color: var(--text-color);
-        line-height: var(--line-height);
-    }
+/* Reset de márgenes y paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    p {
-        margin-bottom: var(--paragraph-margin-bottom);
-    }
+/* Tipo de letra */
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
+/* Estilos para el header */
+header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 4px solid var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    header {
-        background-color: var(--primary-color);
-        color: white;
-        padding: 20px;
-        text-align: center;
-        border-bottom: 4px solid var(--secondary-color);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        /* Cambia la posición de sticky a relativa */
-        position: relative;
-        z-index: 1000;
-        box-shadow: var(--box-shadow);
-    }
+header .logo {
+  max-width: 180px;
+  margin-left: 20px;
+  transition: transform 0.3s;
+}
 
-    header .logo {
-        max-width: 180px;
-        margin-left: 20px;
-        transition: transform var(--transition-duration);
-    }
+header .logo:hover {
+  transform: scale(1.05);
+}
 
-    header .logo:hover {
-        transform: scale(var(--hover-scale));
-    }
-
-    .intro {
+ .intro {
         padding: 20px;
         text-align: center;
         background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
@@ -95,229 +79,341 @@
         font-size: 1.5em;
         font-weight: bold;
     }
+/* Estilos para la sección principal */
+.pagina {
+  display: flex;
+  padding: 40px 20px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
 
-    .content {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 20px 0;
-    }
+.contenido {
+  flex: 1;
+}
 
-    .vacantes, .addresses {
-        flex: 1;
-        margin: 10px;
-        max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
-    }
+.formulario-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--white-color);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    .vacante, .address-item {
-        background-color: white;
-        border: 1px solid var(--border-color);
-        border-radius: var(--border-radius);
-        margin: 10px 0;
-        padding: 20px;
-        box-shadow: var(--box-shadow);
-        transition: transform var(--transition-duration), box-shadow var(--transition-duration);
-        flex-basis: 100%; /* Ocupa todo el ancho del contenedor */
-        flex-grow: 1;
-    }
+iframe {
+  border: none;
+}
 
-    @media (min-width: 768px) {
-        .vacante, .address-item {
-            flex-basis: 48%; /* Ocupa el 48% del ancho del contenedor en pantallas medianas y grandes */
-        }
-    }
+/* Estilos para las sucursales */
+.sucursales {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
 
-    .vacante:hover, .address-item:hover {
-        transform: scale(var(--hover-scale));
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
+.sucursal-card {
+  background-color: var(--white-color);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform var(--transition-duration), box-shadow var(--transition-duration);
+}
 
-    .vacante h2, .address-item h2 {
-        color: var(--accent-color);
-        margin-top: 0;
-        transition: color var(--transition-duration);
-    }
+.sucursal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    .vacante h2:hover, .address-item h2:hover {
-        color: var(--secondary-color);
-    }
+.sucursal-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
 
-    .vacante p, .address-item p, .vacante ul, .address-item ul {
-        color: var(--muted-text-color);
-        line-height: var(--line-height);
-        margin-bottom: var(--paragraph-margin-bottom);
-    }
+.sucursal-info {
+  padding: 16px;
+  text-align: center;
+}
 
-    .vacante ul, .address-item ul {
-        padding-left: 20px;
-    }
+.sucursal-info h2 {
+  font-size: var(--font-size-medium);
+  color: var(--accent-color);
+  margin-bottom: 8px;
+}
 
-    .cta-button {
-        display: inline-block;
-        background-color: #666;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        margin-top: 10px;
-        text-align: center;
-        transition: background-color var(--transition-duration), transform var(--transition-duration);
-    }
+.sucursal-info p {
+  font-size: var(--font-size-small);
+  color: var(--muted-text-color);
+}
 
-    .cta-button:hover {
-        background-color: #444;
-        transform: scale(var(--hover-scale));
-    }
+.cta-button {
+  display: inline-block;
+  margin-top: 16px;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: var(--font-size-small);
+  transition: background-color var(--transition-duration), transform var(--transition-duration);
+}
 
-    .form-container {
-        background-color: white;
-        border: 1px solid var(--border-color);
-        border-radius: var(--border-radius);
-        padding: 20px;
-        box-shadow: var(--box-shadow);
-        margin: 20px 0;
-        transition: transform var(--transition-duration), box-shadow var(--transition-duration);
-    }
+.cta-button:hover {
+  background-color: var(--accent-color);
+  transform: scale(1.05);
+}
 
-    .form-container:hover {
-        transform: scale(var(--hover-scale));
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
+/* Estilos para las vacantes */
+.vacante {
+  background-color: var(--white-color);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    .form-container h2 {
-        margin-top: 0;
-        color: var(--accent-color);
-        transition: color var(--transition-duration);
-    }
+.vacante-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
 
-    .form-container h2:hover {
-        color: var(--secondary-color);
-    }
+.vacante h3 {
+  font-size: 1.5em;
+  color: var(--accent-color);
+  margin-bottom: 12px;
+}
 
-    .form-container label {
-        display: block;
-        margin-top: 10px;
-        margin-bottom: 5px;
-        color: var(--muted-text-color);
-    }
+.vacante p {
+  font-size: var(--font-size-medium);
+  color: var(--muted-text-color);
+  margin-bottom: 8px;
+}
 
-    .form-container input, .form-container select {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 10px;
-        border: 1px solid var(--border-color);
-        border-radius: 4px;
-        box-sizing: border-box;
-        transition: border-color var(--transition-duration);
-    }
+.vacante a.cta-button {
+  margin-top: 12px;
+}
 
-    .form-container input:focus, .form-container select:focus {
-        border-color: var(--secondary-color);
-        outline: none;
-    }
+/* Información de contacto */
+.informacion-contacto {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 40px;
+  background-color: var(--background-color);
+  text-align: center;
+  flex-wrap: wrap;
+}
 
-    .form-container button {
-        background-color: var(--secondary-color);
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color var(--transition-duration), transform var(--transition-duration);
-    }
+.tooltip-icon {
+  font-size: 3em;
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: color var(--transition-duration), transform var(--transition-duration);
+}
 
-    .form-container button:hover {
-        background-color: #0056b3;
-        transform: scale(var(--hover-scale));
-    }
+.tooltip-icon:hover {
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
 
-    .additional-info {
-        padding: 20px 0;
-        background-color: #f1f1f1;
-    }
+.tooltip-text {
+  visibility: hidden;
+  width: 250px;
+  background-color: #333;
+  color: var(--white-color);
+  text-align: center;
+  border-radius: 5px;
+  padding: 15px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity var(--transition-duration), visibility var(--transition-duration);
+  font-size: var(--font-size-small);
+}
 
-    .info-block {
-        background-color: white;
-        border: 1px solid var(--border-color);
-        border-radius: var(--border-radius);
-        padding: 20px;
-        box-shadow: var(--box-shadow);
-        margin-bottom: 20px;
-        transition: transform var(--transition-duration), box-shadow var(--transition-duration);
-    }
+.tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
 
-    .info-block:hover {
-        transform: scale(var(--hover-scale));
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
+.info-item:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
 
-    .info-block p, .info-block ul {
-        margin-bottom: var(--paragraph-margin-bottom);
-        line-height: var(--line-height);
-    }
+.info-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+  flex: 1;
+}
 
-    .info-block a {
-        color: var(--accent-color);
-        text-decoration: none;
-        transition: color var(--transition-duration), text-decoration var(--transition-duration);
-    }
+footer {
+  background-color: var(--accent-color);
+  color: var(--white-color);
+  text-align: center;
+  padding: 20px;
+  font-size: var(--font-size-small);
+  border-top: 1px solid #ddd;
+}
 
-    .info-block a:hover {
-        color: var(--secondary-color);
-        text-decoration: underline;
-    }
+/* Modal de carga */
+#loaderModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(44, 62, 80, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--transition-duration) ease;
+}
 
-    .hidden {
-        display: none;
-    }
+#loaderModal.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
 
-    .address-item {
-        display: flex;
-        margin-bottom: 20px;
-    }
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--white-color);
+  font-size: 1.62em;
+  text-align: center;
+}
 
-    .address-item img {
-        max-width: 150px;
-        margin-right: 20px;
-        border: 1px solid var(--border-color);
-        border-radius: var(--border-radius);
-        transition: transform var(--transition-duration);
-    }
+.spinner {
+  border: 4.5px solid rgba(255, 255, 255, 0.3);
+  border-top: 4.5px solid var(--white-color);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 18px;
+}
 
-    .address-item img:hover {
-        transform: scale(var(--hover-scale));
-    }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-    .address-text {
-        flex: 1;
-    }
+/* Responsive design */
+@media (max-width: 1024px) {
+  .pagina {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-    footer {
-        background-color: var(--accent-color);
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-        box-shadow: var(--box-shadow);
-    }
+  .formulario-container {
+    max-width: none;
+    flex: 1;
+  }
+}
 
-    footer a {
-        color: white;
-        text-decoration: none;
-        transition: text-decoration var(--transition-duration);
-    }
+@media (max-width: 768px) {
+  .pagina {
+    flex-direction: column;
+    padding: 20px 10px;
+    gap: 20px;
+  }
 
-    footer a:hover {
-        text-decoration: underline;
-    }
-</style>
+  .informacion-contacto {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  header .logo {
+    height: 40px;
+  }
+
+  .sucursales {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .sucursal-info h2 {
+    font-size: 1.2em;
+  }
+
+  .sucursal-info p {
+    font-size: 0.9em;
+  }
+
+  .cta-button {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+
+  .vacante h3 {
+    font-size: 1.3em;
+  }
+
+  .vacante p {
+    font-size: 1em;
+  }
+
+  .tooltip-text {
+    font-size: 0.9em;
+  }
+}
+
+/* Botón de volver a la lista de sucursales */
+.volver-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: var(--font-size-small);
+  cursor: pointer;
+  transition: background-color var(--transition-duration), transform var(--transition-duration);
+  border: none;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Asegura que el botón esté sobre otros elementos */
+}
+
+.volver-button:hover {
+  background-color: var(--accent-color);
+  transform: scale(1.05);
+}
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <img src="logo.png" alt="Aceros del Pacífico" class="logo">
-            <!-- <h1>Vacantes Disponibles</h1> -->
-        </div>
-    </header>
+
+<!-- Encabezado -->
+<header>
+  <div class="container">
+    <img src="logo.png" alt="Aceros del Pacífico" class="logo">
+  </div>
+</header>
+
+</header>
     <section class="intro">
         <div class="container">
             <p>Bienvenido a nuestra página de vacantes.</p> 
@@ -326,273 +422,207 @@
              <!-- <p>¡Únete a nuestro equipo!</p>  -->
         </div>
     </section>
-    <section class="content container">
-        <div class="vacantes">
-            <div class="vacante">
-                <h2>Chófer</h2>
-                <p><strong>Requisitos:</strong> Identificación oficial vigente, comprobante de domicilio, número de seguro social, licencia de conducir federal (para Baja California Sur) vigente y constancia de situación fiscal.</p>
-                <p><strong>Vehículo:</strong> Torton (12 toneladas)</p>
-                <p><strong>Salario:</strong> $14,000 mensuales</p>
-                <p><strong>Sucursal:</strong> San José</p>   
-              <p><strong>Vehículo:</strong> Nissan (1 tonelada)</p>
-                <p><strong>Salario:</strong> $12,000 mensuales más bonos</p>
-                <p><strong>Sucursal:</strong> Tamaral, Cabo San Lucas</p>                
-                 <!--  <p><strong>Vehículo:</strong> Trailer</p>
-                <p><strong>Salario:</strong> $16,000 mensuales en San José</p>   
-                <p><strong>Salario:</strong> $11,000 mensuales en La Paz</p> 
-                <p><strong>Vehículo:</strong> Trailer</p>
-                <p><strong>Salario:</strong> $8,500 mensuales en Los Mochis</p>
-                <p><strong>Vehículo:</strong> Doble Rodado</p>
-                <p><strong>Salario:</strong> $12,000 mensuales en Tamaral, Cabo San Lucas</p>-->
-                <p>¿Cumples con estos requisitos? (Sí/No)</p>
-                <a href="javascript:void(0)" onclick="window.location.href=generarEnlaceWhatsapp('Hola, estoy interesado en la vacante de Chófer. Cumplo con los requisitos.')" class="cta-button">¡Estoy interesado!</a>
-            </div>
-            <div class="vacante">
-                <h2>Ayudante de Patio</h2>
-                <p><strong>Requisitos:</strong> Identificación oficial vigente, comprobante de domicilio, número de seguro social y constancia de situación fiscal.</p>
-                 <!-- <p><strong>Salario:</strong> $10,000 mensuales en La Paz</p>
-                <p><strong>Salario:</strong> $7,500 mensuales en Los Mochis</p> -->
-                <p><strong>Salario:</strong> $10,000 mensuales</p>
-                <p><strong>Sucursal:</strong> San José</p>  
-                <p><strong>Salario:</strong> $10,000 mensuales</p>
-                <p><strong>Sucursal:</strong> Cabo San Lucas</p>  
-                <p>¿Cumples con estos requisitos? (Sí/No)</p>
-                <a href="javascript:void(0)" onclick="window.location.href=generarEnlaceWhatsapp('Hola, estoy interesado en la vacante de Ayudante de Patio. Cumplo con los requisitos.')" class="cta-button">¡Estoy interesado!</a>
-            </div>
-            <div class="vacante">
-                <h2>Auxiliar en General</h2>
-                <!-- <p><strong>Sucursal:</strong> Los Mochis</p>
-                <p><strong>Salario:</strong> Hasta $8,000 mensuales</p> -->
-                <p><strong>Sucursal:</strong> Tamaral, Cabo San Lucas</p>
-                <p><strong>Salario:</strong> Hasta $9,000 mensuales</p>
-                <p>Para mayor información manda tu Currículum al correo: <a href="mailto:jorgefelixa1810@gmail.com">jorgefelixa1810@gmail.com</a></p>
-                <a href="javascript:void(0)" onclick="window.location.href=generarEnlaceWhatsapp('Hola, estoy interesado en la vacante de Auxiliar en General.')" class="cta-button">¡Estoy interesado!</a>
-            </div>
-                
-            <div class="vacante">
-                <h2>Auxiliar de inventarios</h2>
-             <p><strong>Sucursal:</strong> Los Cabos</p>
-                   <p><strong>Salario:</strong> Hasta $14,000 mensuales</p>
-                <p><strong>Sucursal:</strong>Tamaral, Cabo San Lucas</p>
-                <p><strong>Salario:</strong> Hasta $14,000 mensuales</p>
-                    <p><strong>Sucursal:</strong> El Fuerte</p>
-                  <p><strong>Salario:</strong> Hasta $10,000 mensuales</p> 
-                <p>Para mayor información manda tu Currículum al correo: <a href="mailto:capacitacion@acerosdelpacifico.com.mx">capacitacion@acerosdelpacifico.com.mx</a></p>
-                <a href="javascript:void(0)" onclick="window.location.href=generarEnlaceWhatsapp('Hola, estoy interesado en la vacante de auxiliar de inventarios.')" class="cta-button">¡Estoy interesado!</a>
-            </div> 
-            <div class="vacante">
-                <h2>Líder Administrativo</h2>
-                <p><strong>Sucursal:</strong> Tamaral, Cabo San Lucas</p>
-                <p><strong>Salario:</strong> Hasta $16,000 mensuales</p>
-                <p>Para mayor información manda tu Currículum al correo: <a href="mailto:fjpinedo4@gmail.com">fjpinedo4@gmail.com</a></p>
-                <a href="javascript:void(0)" onclick="window.location.href=generarEnlaceWhatsapp('Hola, estoy interesado en la vacante de Líder Administrativo.')" class="cta-button">¡Estoy interesado!</a>
-            </div>
-            <div class="vacante">
-                <h2>Líder de Ventas</h2>
-                <p><strong>Sucursal:</strong> Tamaral, Cabo San Lucas</p>
-                <p><strong>Salario:</strong> Hasta $25,000 mensuales</p>
-               <!-- <p><strong>Sucursal:</strong> Los Mochis</p>
-                <p><strong>Salario:</strong> Hasta $22,000 mensuales</p>  -->
-                <p>Para mayor información manda tu Currículum al correo: <a href="mailto:fjpinedo4@gmail.com">fjpinedo4@gmail.com</a></p>
-                <a href="javascript:void(0)" onclick="window.location.href=generarEnlaceWhatsapp('Hola, estoy interesado en la vacante de Líder Ventas.')" class="cta-button">¡Estoy interesado!</a>
-            </div>
-          <!-- <div class="vacante">
-                <h2>Cuentas Por Cobrar</h2>
-                <p><strong>Sucursal:</strong> Los Mochis</p>
-                <p><strong>Salario:</strong> Hasta $15,000 mensuales</p>
-                <p>Para mayor información manda tu Currículum al correo: <a href="mailto:fjpinedo4@gmail.com">fjpinedo4@gmail.com</a></p>
-                <a href="javascript:void(0)" onclick="window.location.href=generarEnlaceWhatsapp('Hola, estoy interesado en la vacante de Cuentas Por Cobrar.')" class="cta-button">¡Estoy interesado!</a>
-            </div>  -->
-            <div class="vacante">
-                <h2>Vendedor</h2>
-                <p><strong>Requisitos:</strong></p>
-                <li>Experiencia comprobable en ventas.</li>
-                <li>Experiencia en ferretería.</li>
-                <p><strong>Sucursal:</strong> Los Cabos</p>
-                <p><strong>Salario:</strong> Hasta $12,000 mensuales</p>
-                   <!--  <p><strong>Sucursal:</strong> San José</p>
-                <p><strong>Salario:</strong> Hasta $12,000 mensuales</p> -->
-                <p><strong>Sucursal:</strong> La Paz</p>
-                <p><strong>Salario:</strong> Hasta $10,000 mensuales</p>
-                 <!-- <p><strong>Sucursal:</strong> Los Mochis</p>
-                <p><strong>Salario:</strong> Hasta $9,000 mensuales</p>  -->
-                <p>Para mayor información manda tu Currículum al correo: <a href="mailto:jorgefelixa1810@gmail.com">jorgefelixa1810@gmail.com</a></p>
-                <a href="javascript:void(0)" onclick="window.location.href=generarEnlaceWhatsapp('Hola, estoy interesado en la vacante de Vendedor.')" class="cta-button">¡Estoy interesado!</a>
-            </div>
-                 <!--    <div class="vacante">
-                <h2>Encargado de Caseta</h2>
-                <p><strong>Requisitos:</strong></p>
-            <li>Persona con capacidad para analizar y revisar la información que está en la factura.</li>
-            <li>Conocimiento de los productos con un buen nivel para identificarlos.</li>
-            <li>Habilidad para contar los productos.</li>
-                <p><strong>Sucursal:</strong> San José</p>
-                <p><strong>Salario:</strong> Hasta $12,000 mensuales</p>
-                <p>Para mayor información manda tu Currículum al correo: <a href="mailto:capacitacion@acerosdelpacifico.com.mx">capacitacion@acerosdelpacifico.com.mx</a></p>
-                <a href="javascript:void(0)" onclick="window.location.href=generarEnlaceWhatsapp('Hola, estoy interesado en la vacante de Encargado de Caseta.')" class="cta-button">¡Estoy interesado!</a>
-            </div>  -->
-       <div class="vacante">
-                <h2>Mensajero</h2>
-            <p><strong>Requisitos:</strong></p>
-            <li>Minimo 6 meses de experiencia</li>
-            <li>Licencia de conducir vigente.</li>
-            <li>Manejar Motocicleta.</li>
-                <p><strong>Sucursal:</strong> San José</p>
-                <p><strong>Salario:</strong> Hasta $11,000 mensuales</p>
-                <p><strong>Sucursal:</strong> Cabo San Lucas</p>
-                <p><strong>Salario:</strong> Hasta $11,000 mensuales</p>
-                <p>Para mayor información manda tu Currículum al correo: <a href="mailto:jorgefelixa1810@gmail.com">capacitacion@acerosdelpacifico.com.mx</a></p>
-                <a href="javascript:void(0)" onclick="window.location.href=generarEnlaceWhatsapp('Hola, estoy interesado en la vacante de Cartero.')" class="cta-button">¡Estoy interesado!</a>
-            </div> 
-          <!--   <div class="vacante">
-                <h2>Cajera</h2>
-                <!-- <p><strong>Sucursal:</strong> San José</p>
-                <p><strong>Salario:</strong> Hasta $12,000 mensuales</p> 
-                <p><strong>Sucursal:</strong> El Fuerte</p>
-                <p><strong>Salario:</strong> Hasta $8,500 mensuales</p>
-                <p>Para mayor información manda tu Currículum al correo: <a href="mailto:capacitacion@acerosdelpacifico.com.mx">capacitacion@acerosdelpacifico.com.mx</a></p>
-                <a href="javascript:void(0)" onclick="window.location.href=generarEnlaceWhatsapp('Hola, estoy interesado en la vacante de Cajera.')" class="cta-button">¡Estoy interesado!</a>
-            </div> 
-                <div class="vacante">
-                <h2>Ayudante Mecanico Electrico Automotriz</h2>
-                <p><strong>Sucursal:</strong> Los Mochis</p>
-                <p><strong>Salario:</strong> Hasta $12,000 mensuales</p>
-                <p>Para mayor información manda tu Currículum al correo: <a href="mailto:capacitacion@acerosdelpacifico.com.mx">capacitacion@acerosdelpacifico.com.mx</a></p>
-                <a href="javascript:void(0)" onclick="window.location.href=generarEnlaceWhatsapp('Hola, estoy interesado en la vacante de Ayudante Mecanico Electrico Automotriz.')" class="cta-button">¡Estoy interesado!</a>
-            </div>  -->
-            </div>
-        </div>
-        <div class="addresses">
-            <div class="address-item">
-                <img src="2020-12-11.jpg" alt="Aceros del Pacífico">
-                <div class="address-text">
-                    <p><strong>Sucursal Los Mochis</strong></p>
-                    <p>Dirección: Av. Independencia 1856, Fraccionamiento Cuauhtémoc, 81248 Los Mochis, Sin.</p>
-                    <p><a href="https://maps.app.goo.gl/KwNLDTir6dHAfAyHA" target="_blank">Link: https://maps.app.goo.gl/KwNLDTir6dHAfAyHA</a></p>
-                </div>
-            </div>
-            <div class="address-item">
-                <img src="Sin título.png" alt="Aceros del Pacífico">
-                <div class="address-text">
-                    <p><strong>Sucursal Los Cabos</strong></p>
-                    <p>Dirección: Flor de Pitahaya Lote 25, Brisas del Pacifico, 23473 Cabo San Lucas, B.C.S.</p>
-                    <p><a href="https://maps.app.goo.gl/2VeUbp9RT6zj7gmb8" target="_blank">Link: https://maps.app.goo.gl/2VeUbp9RT6zj7gmb8</a></p>
-                </div>
-            </div>
-            <div class="address-item">
-                <img src="2023-03-14.jpg" alt="Aceros del Pacífico">
-                <div class="address-text">
-                    <p><strong>Sucursal San José</strong></p>
-                    <p>Dirección: Julio Pimentel Green manzana 7c lote s/n Colonia Las Veredas, 23435 San José del Cabo, B.C.S.</p>
-                    <p><a href="https://maps.app.goo.gl/J7d3s6A5EEwhA6VK8" target="_blank">Link: https://maps.app.goo.gl/J7d3s6A5EEwhA6VK8</a></p>
-                </div>
-            </div>
-            <div class="address-item">
-                <img src="Sucursal Culiacan.jpg" alt="Aceros del Pacífico">
-                <div class="address-text">
-                    <p><strong>Sucursal Culiacán</strong></p>
-                    <p>Dirección: Blvd. Maquio J, Av. Manuel J. Clouthier #5765, Fracc. Perisur, 80197 Culiacán Rosales, Sin.</p>
-                    <p><a href="https://maps.app.goo.gl/hbfN7nEmuU5Ky5Sz6" target="_blank">Link: https://maps.app.goo.gl/hbfN7nEmuU5Ky5Sz6</a></p>
-                </div>
-                </div>
-                <div class="address-item">
-                <img src="El Fuerte.jpg" alt="Aceros del Pacífico">
-                <div class="address-text">
-                    <p><strong>Sucursal El Fuerte</strong></p>
-                    <p>Dirección: Carretera El Fuerte - Choix km 1 + 320, Centro, 81820 El Fuerte, Sin.</p>
-                    <p><a href="https://maps.app.goo.gl/EG5mhz7pxJhrZGXR7" target="_blank">Link: https://maps.app.goo.gl/EG5mhz7pxJhrZGXR7</a></p>
-                </div>
-                </div>
-                <div class="address-item">
-                <img src="Juan José Rios.jpg" alt="Aceros del Pacífico">
-                <div class="address-text">
-                    <p><strong>Sucursal Juan José Rios</strong></p>
-                    <p>Dirección: Jambiola entre Carretera Internacional y Calle 0 Poste A12, 81110 El Estero, Sin.</p>
-                    <p><a href="https://maps.app.goo.gl/NVfDfcir4sKXEC7RA" target="_blank">Link: https://maps.app.goo.gl/NVfDfcir4sKXEC7RA</a></p>
-                </div>
-                </div>
-                <div class="address-item">
-                <img src="La Paz.png" alt="Aceros del Pacífico">
-                <div class="address-text">
-                    <p><strong>Sucursal La Paz</strong></p>
-                    <p>Dirección: Blvd. Gral. Agustín Olachea 4910, entre Tenochtitlán y Tuna, Las Garzas, 23070 La Paz, B.C.S.</p>
-                    <p><a href="https://maps.app.goo.gl/5yZ64jmo4d5wtAfn6" target="_blank">Link: https://maps.app.goo.gl/5yZ64jmo4d5wtAfn6</a></p>
-                </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="additional-info container">
-        <div class="info-block">
-            <h2>Información Adicional</h2>
-            
-            <p><strong><a href="javascript:void(0)" onclick="toggleVisibility('horarios')">Horarios de trabajo de los puestos ¡presiona aquí!</a></strong></p>
-            <p id="horarios" class="hidden">Lunes a viernes, 8 a.m. - 1 p.m. y 2:30 p.m. - 6 p.m. Sábados, 8 a.m. - 1:30 p.m.</p>
+<!-- Contenido principal -->
+<section class="pagina">
+  <div class="contenido">
+    <!-- Aquí se mostrarán las sucursales o las vacantes -->
+    <div class="sucursales"></div>
+  </div>
+  <div class="formulario-container">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfvc46ghK_Q_vjDVg3EMF168umEyoHd5dSTVbvGOzF0i7qe9Q/viewform?embedded=true" width="100%" height="1316" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+  </div>
+</section>
 
-            <p><strong><a href="javascript:void(0)" onclick="toggleVisibility('documentacion')">Documentación principal ¡presiona aquí!</a></strong></p>
-            <ul id="documentacion" class="hidden">
-            <li>Solicitud de empleo / Currículum vitae</li>
-            <li>Identificación oficial - Vigente</li>
-            <li>Comprobante de domicilio (Recibo de luz, no mayor a 3 meses)</li>
-            <li>Número de Seguridad Social - En documento oficial del IMSS</li>
-            <li>Constancia de Situación Fiscal - No mayor a 3 meses</li>
-            <li>Carta de no antecedentes penales - No mayor a 3 meses</li>
-            <li>Certificado medico</li>
-            <li>Certificado de estudios</li>
-            <li>Licencia para conducir - Vigente</li>
-            <li>Hoja de cálculo Infonavit - Sacado recientemente si cuenta con crédito</li>
-            </ul>
+<!-- Información de contacto -->
+<section class="informacion-contacto">
+  <div class="info-item">
+    <i class="fas fa-phone tooltip-icon"></i>
+    <span class="tooltip-text">Persona de contacto: <strong>Jorge Félix</strong><br>Teléfono: 6882191668 (Únicamente llamadas).</span>
+  </div>
+  <div class="info-item">
+    <i class="fas fa-clock tooltip-icon"></i>
+    <span class="tooltip-text">Horarios de trabajo:<br>Lunes a viernes, 8 a.m. - 1 p.m. y 2:30 p.m. - 6 p.m.<br>Sábados, 8 a.m. - 1:30 p.m.</span>
+  </div>
+  <div class="info-item">
+    <i class="fas fa-file-alt tooltip-icon"></i>
+    <span class="tooltip-text">Documentación principal:<br>Solicitud de empleo / Currículum vitae<br>Identificación oficial - Vigente<br>Comprobante de domicilio<br>Número de Seguridad Social<br>Constancia de Situación Fiscal</span>
+  </div>
+</section>
 
-            <!-- <p><strong><a href="javascript:void(0)" onclick="toggleVisibility('compromiso')">Compromiso de trabajo en Baja California Sur ¡presiona aquí!</a></strong></p>
-            <ul id="compromiso" class="hidden">
-            <li>Se me pagarán $150 pesos diarios, como apoyo para comida, únicamente desde el día que yo llegué a laborar en la Baja California Sur y hasta transcurrios 15 días.</li>
-            <li>Llegaré a una vivienda proporcionada por la empresa Aceros Cabos S. A. de C. V., en la cual estarán otros compañeros míos de trabajo, sin tener que pagar ningún costo por dicho hospedaje.</li>
-            <li>Me comprometo a mantener mi espacio de habitación o vivienda LIMPIO, durante todo el tiempo.</li>
-            <li>El costo por el servicio de energía eléctrica será prorrateado entre los trabajadores que nos encontremos habitando la vivienda durante el tiempo que estemos en ese espacio.</li>
-            <li>La empresa pagará el recibo de luz y por este acuerdo acepto que se me descuente de mi salario la proporción que me corresponda por ese servicio en función del número de habitantes de la vivienda durante el tiempo que la habite.</li>
-            <li>El costo del agua será pagado por la empresa.</li>
-            <li>Me comprometo a trabajar para Aceros Cabos S. A. de C. V., en la Baja California Sur, por un periodo de 12 semanas mínimo a partir de la fecha que llegue a Baja California Sur.</li>
-            <li>En el caso de querer regresar antes de las 12 semanas a Los Mochis, me comprometo a pagar mis pasajes y el costo del traslado.</li>
-            <li>La empresa no me pagará nada para regresar a Los Mochis en el caso de que quiera regresar antes de ese periodo de 12 semanas.</li>
-            </ul> -->
-            
-            <p><strong><a href="javascript:void(0)" onclick="toggleVisibility('informacion-adicional')">Información adicional ¡presiona aquí!</a></strong></p>
-            <ul id="informacion-adicional" class="hidden">
-               <li>El pago es de manera quincenal.</li> 
-               <li>Preguntar por José Urias para prueba de manejo.</li> 
-               <li>Preguntar por Francisco Félix si vienen por vacante de Trabajador de Patio.</li>    
-            </ul>
-        </div>
-        <div class="form-container">
-    <h2>Para futuras vacantes</h2>
-    <form data-netlify="true" name="solicitud">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" required>
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>© 2024 Aceros del Pacífico. Todos los derechos reservados.</p>
+  </div>
+</footer>
 
-        <label for="telefono">Número de Teléfono</label>
-        <input type="tel" id="telefono" name="telefono" required>
-
-        <label for="vacante">Vacante</label>
-        <input type="text" id="vacante" name="vacante" required>
-
-        <label for="sucursal">Sucursal</label>
-        <select id="sucursal" name="sucursal" required>
-            <option value="">Seleccione una sucursal</option>
-            <option value="los_mochis">Los Mochis</option>
-            <option value="cabo_san_lucas">Cabo San Lucas</option>
-            <option value="la_paz">La Paz</option>
-            <option value="san_jose_del_cabo">San José del Cabo</option>
-            <option value="culiacan">Culiacán</option>
-            <option value="el_fuerte">El Fuerte</option>
-            <option value="juan_jose_rios">Juan José Rios</option>
-            <option value="tamaral">El Tamaral</option>
-        </select>
-        <button type="submit">Enviar</button>
-    </form>
+<!-- Modal de carga -->
+<div id="loaderModal">
+  <div class="loader-content">
+    <div class="spinner"></div>
+    <p>Cargando vacantes...</p>
+  </div>
 </div>
-    </section>
-    <footer>
-        <div class="container">
-            <p>© 2024 Aceros del Pacífico. Todos los derechos reservados.</p>
-    </footer>
+
+<!-- Scripts -->
+<script>
+  // Función para cargar las sucursales y vacantes según el hash en la URL
+  async function cargarContenido() {
+    const url = 'https://script.google.com/macros/s/AKfycbzXKwp9Y7JfdpkIlFKZGxuB84mD2UjffR5y0viXQiI4_QxXOUKIkw3jSSD-0aQ3dmYZ/exec';
+    const contenidoContainer = document.querySelector('.sucursales');
+    contenidoContainer.innerHTML = ''; // Limpiar cualquier contenido anterior
+
+    const loaderModal = document.getElementById('loaderModal');
+    loaderModal.classList.remove('hidden'); // Mostrar el modal
+
+    let vacantes = sessionStorage.getItem('vacantes');
+    if (vacantes) {
+      vacantes = JSON.parse(vacantes);
+      procesarVacantes(vacantes);
+      loaderModal.classList.add('hidden'); // Ocultar el modal cuando se cargan las vacantes
+    } else {
+      try {
+        const response = await fetch(url);
+        vacantes = await response.json();
+        sessionStorage.setItem('vacantes', JSON.stringify(vacantes));
+        procesarVacantes(vacantes);
+        loaderModal.classList.add('hidden'); // Ocultar el modal cuando se cargan las vacantes
+      } catch (error) {
+        console.error('Error al cargar el contenido:', error);
+        contenidoContainer.innerHTML = '<p>Error al cargar el contenido. Inténtalo más tarde.</p>';
+        loaderModal.classList.add('hidden'); // Ocultar el modal en caso de error
+      }
+    }
+  }
+
+    // Función para procesar y mostrar las vacantes según el hash
+  function procesarVacantes(vacantes) {
+    const hash = window.location.hash; // Obtener el hash de la URL (#sucursal)
+    const contenidoContainer = document.querySelector('.sucursales');
+
+    if (!hash || hash === '#') {
+      // Si no hay hash o es vacío, mostrar las sucursales
+      mostrarSucursales(vacantes, contenidoContainer);
+    } else {
+      // Si hay un hash (#sucursal), mostrar las vacantes para esa sucursal
+      const sucursal = decodeURIComponent(hash.substring(1)); // Eliminar el '#' y decodificar el valor
+      mostrarVacantes(vacantes, sucursal, contenidoContainer);
+    }
+  }
+
+  // Función para mostrar las sucursales
+  function mostrarSucursales(vacantes, container) {
+    const sucursales = {};
+
+    // Agrupar las vacantes por sucursal
+    vacantes.forEach(vacante => {
+      if (!sucursales[vacante.sucursal]) {
+        sucursales[vacante.sucursal] = [];
+      }
+      sucursales[vacante.sucursal].push(vacante);
+    });
+
+    container.innerHTML = ''; // Limpiar el contenedor antes de agregar las sucursales
+
+    // Crear los enlaces para cada sucursal
+    for (const sucursal in sucursales) {
+      const sucursalDiv = document.createElement('div');
+      sucursalDiv.classList.add('sucursal');
+
+      // Crear una tarjeta de la sucursal
+      sucursalDiv.innerHTML = `
+        <div class="sucursal-card">
+          <img src="${sucursal}.jpg" alt="${sucursal}" class="sucursal-img" loading="lazy" onerror="this.onerror=null; this.src='default-sucursal.jpg';">
+          <div class="sucursal-info">
+            <h2>${sucursal}</h2>
+            <p>Haz clic para descubrir las vacantes en esta sucursal.</p>
+            <a href="#${encodeURIComponent(sucursal)}" class="cta-button">Ver Vacantes</a>
+          </div>
+        </div>
+      `;
+
+      container.appendChild(sucursalDiv);
+    }
+  }
+
+  // Función para mostrar las vacantes de una sucursal
+  function mostrarVacantes(vacantes, sucursalSeleccionada, container) {
+    const vacantesUnicas = {};
+
+    vacantes.forEach(vacante => {
+      const clave = `${vacante.sucursal}-${vacante.puesto}`;
+      if (!vacantesUnicas[clave]) {
+        vacantesUnicas[clave] = vacante; // Evitar duplicados
+      }
+    });
+
+    const vacantesFiltradas = Object.values(vacantesUnicas).filter(v => v.sucursal === sucursalSeleccionada);
+
+    container.innerHTML = ''; // Limpiar el contenedor antes de agregar vacantes
+
+    if (vacantesFiltradas.length > 0) {
+
+      vacantesFiltradas.forEach(vacante => {
+        const vacanteDiv = document.createElement('div');
+        vacanteDiv.classList.add('vacante');
+
+        // Generar enlace de WhatsApp
+        const telefonoWhatsApp = '526682191668'; // Asegúrate de incluir el código de país
+        const mensaje = `Estoy interesado en la vacante de ${vacante.puesto}`;
+        const enlaceWhatsApp = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
+        vacanteDiv.innerHTML = `
+          <img src="${obtenerImagenVacante(vacante.puesto)}" alt="${vacante.puesto}" class="vacante-img" onerror="this.onerror=null; this.src='default.jpg';">
+          <h3>${vacante.puesto}</h3>
+          <p><strong>Salario:</strong> ${formatearSalario(vacante.salario)}</p>
+          <p><strong>Descripción:</strong> ${vacante.descripcion}</p>
+          <a href="${enlaceWhatsApp}" class="cta-button" target="_blank">¡Estoy interesado!</a>
+        `;
+
+        container.appendChild(vacanteDiv);
+      });
+    } else {
+      container.innerHTML = `<p>No hay vacantes disponibles en ${sucursalSeleccionada}</p>`;
+    }
+
+    // Crear el botón de "Volver a la lista de sucursales"
+    const volverButton = document.createElement('button');
+    volverButton.textContent = 'Volver a la lista de sucursales';
+    volverButton.classList.add('volver-button'); // Añadir la clase para estilizar el botón
+
+    // Agregar el botón al contenedor
+    container.insertBefore(volverButton, container.firstChild);
+
+    // Evento para volver a la lista de sucursales cuando se haga clic en el botón
+    volverButton.addEventListener('click', function() {
+      window.location.hash = ''; // Limpiar el hash y volver a la lista de sucursales
+      cargarContenido(); // Recargar el contenido de las sucursales
+    });
+  }
+
+  // Función para obtener la imagen según el puesto
+  function obtenerImagenVacante(puesto) {
+    // Convertir el nombre del puesto a minúsculas, eliminar acentos y caracteres especiales
+    const nombreImagen = puesto.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Eliminar acentos
+      .replace(/\s+/g, '-') // Reemplazar espacios por guiones
+      .replace(/[^\w-]/g, ''); // Eliminar caracteres que no sean letras, números o guiones
+    return `${nombreImagen}.jpg`; // Ruta donde se almacenan las imágenes
+  }
+
+  // Función para formatear el salario como moneda sin decimales
+  function formatearSalario(salario) {
+    return new Intl.NumberFormat('es-MX', {
+      style: 'currency',
+      currency: 'MXN',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(salario);
+  }
+
+  // Cargar el contenido cuando la página se cargue o cambie el hash
+  document.addEventListener('DOMContentLoaded', cargarContenido);
+  window.addEventListener('hashchange', cargarContenido); // Recargar contenido al cambiar el hash
+</script>
 </body>
 </html>
