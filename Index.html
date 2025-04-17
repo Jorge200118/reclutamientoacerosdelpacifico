@@ -3,626 +3,1523 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vacantes Disponibles - Aceros del Pacífico</title>
-  <!-- Enlace a Font Awesome para íconos -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <!-- Enlace a Google Fonts -->
+  <meta name="description" content="Bolsa de trabajo de Aceros del Pacífico. Encuentra tu próxima oportunidad laboral y únete a nuestro equipo.">
+  <meta name="theme-color" content="#0d1c59">
+  <title>Vacantes Disponibles | Aceros del Pacífico</title>
+  
+  <!-- Preconexiones para mejorar el rendimiento -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico">
+  
+  <!-- Estilos críticos inline para carga rápida -->
   <style>
-/* Diseño Minimalista Mejorado */
-
-/* Definir variables globales */
-:root {
-  --primary-color: #0d1c59;
-  --secondary-color: #007bff;
-  --accent-color: #003366;
-  --background-color: #f9f9f9;
-  --text-color: #333;
-  --muted-text-color: #555;
-  --white-color: #ffffff;
-  --font-family: 'Helvetica Neue', sans-serif;
-  --font-size-large: 2em;
-  --font-size-medium: 1.25em;
-  --font-size-small: 1em;
-  --transition-duration: 0.3s;
-}
-
-/* Reset de márgenes y paddings */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Tipo de letra */
-body {
-  font-family: var(--font-family);
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-/* Estilos para el header */
-header {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 20px;
-  text-align: center;
-  border-bottom: 4px solid var(--secondary-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-header .logo {
-  max-width: 180px;
-  margin-left: 20px;
-  transition: transform 0.3s;
-}
-
-header .logo:hover {
-  transform: scale(1.05);
-}
-
- .intro {
-        padding: 20px;
-        text-align: center;
-        background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-        color: white;
-        box-shadow: var(--box-shadow);
+    :root {
+      --primary: #0d1c59;
+      --primary-light: #233784;
+      --primary-dark: #07103a;
+      --secondary: #0091ff;
+      --secondary-dark: #0077d4;
+      --accent: #ff6b00;
+      --success: #00c853;
+      --warning: #ffc107;
+      --error: #f44336;
+      --gray-100: #f9f9f9;
+      --gray-200: #eeeeee;
+      --gray-300: #e0e0e0;
+      --gray-400: #bdbdbd;
+      --gray-500: #9e9e9e;
+      --gray-600: #757575;
+      --gray-700: #616161;
+      --gray-800: #424242;
+      --gray-900: #212121;
+      --white: #ffffff;
+      --black: #000000;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-lg: 0 10px 20px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.05);
+      --anim-fast: 0.15s;
+      --anim-normal: 0.3s;
+      --anim-slow: 0.5s;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-main);
+      line-height: 1.5;
+      color: var(--gray-900);
+      background-color: var(--gray-100);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    img { max-width: 100%; }
+    #app-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--white);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+    }
+    .logo-pulse {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: var(--gray-100);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: var(--shadow-md);
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(13, 28, 89, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(13, 28, 89, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(13, 28, 89, 0); }
+    }
+  </style>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Estilos completos -->
+  <style>
+    /* Utilidades básicas */
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .text-center { text-align: center; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-3 { margin-bottom: 1rem; }
+    .mb-4 { margin-bottom: 1.5rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-3 { margin-top: 1rem; }
+    .p-2 { padding: 0.5rem; }
+    .p-3 { padding: 1rem; }
+    .px-3 { padding-left: 1rem; padding-right: 1rem; }
+    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    
+    /* Encabezado */
+    .header {
+      background-color: var(--primary);
+      width: 100%;
+      z-index: 1000;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+    }
+    
+    .header-title {
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+    
+    .header-actions .btn {
+      margin-left: 0.5rem;
+    }
+    
+    /* Hero banner */
+    .hero {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      padding: 2rem 0;
+      color: var(--white);
+      text-align: center;
+      position: relative;
+      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1000" height="300" viewBox="0 0 1000 300"%3E%3Cpath fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1" d="M0,150 L1000,150 M500,0 L500,300 M250,50 L750,250 M750,50 L250,250 M250,100 L750,200 M750,100 L250,200"%3E%3C/path%3E%3C/svg%3E');
+      background-size: cover;
+    }
+    
+    .hero-container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      opacity: 0.95;
     }
 
-    .intro p {
-        font-size: 1.5em;
-        font-weight: bold;
+    /* Contenido principal */
+    .main-content {
+      flex: 1;
+      width: 100%;
+      max-width: 100%;
+      padding-top: 1.5rem;
+      padding-bottom: 3rem;
     }
-/* Estilos para la sección principal */
-.pagina {
-  display: flex;
-  padding: 40px 20px;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.contenido {
-  flex: 1;
-}
-
-.formulario-container {
-  width: 100%;
-  max-width: 600px;
-  background-color: var(--white-color);
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-iframe {
-  border: none;
-}
-
-/* Estilos para las sucursales */
-.sucursales {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-.sucursal-card {
-  background-color: var(--white-color);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform var(--transition-duration), box-shadow var(--transition-duration);
-}
-
-.sucursal-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.sucursal-img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.sucursal-info {
-  padding: 16px;
-  text-align: center;
-}
-
-.sucursal-info h2 {
-  font-size: var(--font-size-medium);
-  color: var(--accent-color);
-  margin-bottom: 8px;
-}
-
-.sucursal-info p {
-  font-size: var(--font-size-small);
-  color: var(--muted-text-color);
-}
-
-.cta-button {
-  display: inline-block;
-  margin-top: 16px;
-  background-color: var(--secondary-color);
-  color: var(--white-color);
-  padding: 10px 20px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: var(--font-size-small);
-  transition: background-color var(--transition-duration), transform var(--transition-duration);
-}
-
-.cta-button:hover {
-  background-color: var(--accent-color);
-  transform: scale(1.05);
-}
-
-/* Estilos para las vacantes */
-.vacante {
-  background-color: var(--white-color);
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.vacante-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-
-.vacante h3 {
-  font-size: 1.5em;
-  color: var(--accent-color);
-  margin-bottom: 12px;
-}
-
-.vacante p {
-  font-size: var(--font-size-medium);
-  color: var(--muted-text-color);
-  margin-bottom: 8px;
-}
-
-.vacante a.cta-button {
-  margin-top: 12px;
-}
-
-/* Información de contacto */
-.informacion-contacto {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 40px;
-  background-color: var(--background-color);
-  text-align: center;
-  flex-wrap: wrap;
-}
-
-.tooltip-icon {
-  font-size: 3em;
-  color: var(--secondary-color);
-  cursor: pointer;
-  transition: color var(--transition-duration), transform var(--transition-duration);
-}
-
-.tooltip-icon:hover {
-  color: var(--primary-color);
-  transform: scale(1.1);
-}
-
-.tooltip-text {
-  visibility: hidden;
-  width: 250px;
-  background-color: #333;
-  color: var(--white-color);
-  text-align: center;
-  border-radius: 5px;
-  padding: 15px;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity var(--transition-duration), visibility var(--transition-duration);
-  font-size: var(--font-size-small);
-}
-
-.tooltip-text::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #333 transparent transparent transparent;
-}
-
-.info-item:hover .tooltip-text {
-  visibility: visible;
-  opacity: 1;
-}
-
-.info-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: auto;
-  flex: 1;
-}
-
-footer {
-  background-color: var(--accent-color);
-  color: var(--white-color);
-  text-align: center;
-  padding: 20px;
-  font-size: var(--font-size-small);
-  border-top: 1px solid #ddd;
-}
-
-/* Modal de carga */
-#loaderModal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(44, 62, 80, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity var(--transition-duration) ease;
-}
-
-#loaderModal.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.loader-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--white-color);
-  font-size: 1.62em;
-  text-align: center;
-}
-
-.spinner {
-  border: 4.5px solid rgba(255, 255, 255, 0.3);
-  border-top: 4.5px solid var(--white-color);
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 18px;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsive design */
-@media (max-width: 1024px) {
-  .pagina {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .formulario-container {
-    max-width: none;
-    flex: 1;
-  }
-}
-
-@media (max-width: 768px) {
-  .pagina {
-    flex-direction: column;
-    padding: 20px 10px;
-    gap: 20px;
-  }
-
-  .informacion-contacto {
-    flex-direction: column;
-    gap: 20px;
-  }
-}
-
-@media (max-width: 576px) {
-  header .logo {
-    height: 40px;
-  }
-
-  .sucursales {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-
-  .sucursal-info h2 {
-    font-size: 1.2em;
-  }
-
-  .sucursal-info p {
-    font-size: 0.9em;
-  }
-
-  .cta-button {
-    font-size: 0.9em;
-    padding: 8px 16px;
-  }
-
-  .vacante h3 {
-    font-size: 1.3em;
-  }
-
-  .vacante p {
-    font-size: 1em;
-  }
-
-  .tooltip-text {
-    font-size: 0.9em;
-  }
-}
-
-/* Botón de volver a la lista de sucursales */
-.volver-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: var(--secondary-color);
-  color: var(--white-color);
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: var(--font-size-small);
-  cursor: pointer;
-  transition: background-color var(--transition-duration), transform var(--transition-duration);
-  border: none;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000; /* Asegura que el botón esté sobre otros elementos */
-}
-
-.volver-button:hover {
-  background-color: var(--accent-color);
-  transform: scale(1.05);
-}
+    
+    .main-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    
+    .content-area {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .sidebar {
+      width: 100%;
+      max-width: 400px;
+    }
+    
+    /* Buscador */
+    .search-box {
+      background-color: var(--white);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.5rem;
+    }
+    
+    .search-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .search-input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+    }
+    
+    .search-input:focus {
+      border-color: var(--secondary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 145, 255, 0.2);
+    }
+    
+    /* Títulos de sección */
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--accent);
+      border-radius: 3px;
+    }
+    
+    /* Grid para sucursales */
+    .branch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+    }
+    
+    /* Tarjeta de sucursal */
+    .branch-card {
+      background-color: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--anim-normal) ease, box-shadow var(--anim-normal) ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .branch-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .branch-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-top-left-radius: var(--radius-md);
+      border-top-right-radius: var(--radius-md);
+      position: relative;
+    }
+    
+    .branch-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .branch-vacancies-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: var(--accent);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      font-weight: 500;
+      font-size: 0.875rem;
+      border-radius: 0 var(--radius-md) 0 var(--radius-md);
+    }
+    
+    .branch-content {
+      padding: 1.25rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .branch-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+    
+    .branch-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    .branch-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--gray-700);
+    }
+    
+    .branch-meta-item i {
+      color: var(--primary);
+      width: 20px;
+      text-align: center;
+    }
+    
+    .branch-footer {
+      margin-top: auto;
+    }
+    
+    /* Tarjeta de vacante */
+    .job-card {
+      background-color: var(--white);
+      border-radius: var(--radius-md);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--anim-normal) ease, box-shadow var(--anim-normal) ease;
+      overflow: hidden;
+    }
+    
+    .job-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .job-header {
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--gray-200);
+      position: relative;
+    }
+    
+    .job-image {
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+      margin-right: 1rem;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background-color: var(--gray-200);
+    }
+    
+    .job-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .job-title-area {
+      flex-grow: 1;
+    }
+    
+    .job-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.375rem;
+    }
+    
+    .job-location {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--gray-600);
+    }
+    
+    .job-salary {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      background-color: var(--primary);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      font-weight: 600;
+      border-radius: 50px;
+      font-size: 0.875rem;
+    }
+    
+    .job-body {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    
+    .job-description {
+      color: var(--gray-800);
+      margin-bottom: 1.25rem;
+    }
+    
+    .job-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    
+    .job-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--gray-100);
+      padding: 0.375rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.8125rem;
+    }
+    
+    .job-meta-item i {
+      color: var(--primary);
+    }
+    
+    .job-actions {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    /* Formulario */
+    .form-container {
+      background-color: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      padding: 1.5rem;
+      height: 100%;
+    }
+    
+    .form-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+    
+    /* Componentes de información */
+    .info-section {
+      background-color: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      padding: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    
+    .info-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+    
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .info-card {
+      background-color: var(--gray-100);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      text-align: center;
+      transition: transform var(--anim-normal) ease;
+    }
+    
+    .info-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.25rem;
+    }
+    
+    .info-card-title {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+    
+    .info-text {
+      font-size: 0.9375rem;
+      color: var(--gray-700);
+    }
+    
+    /* Botones */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all var(--anim-fast) ease;
+      border: none;
+      font-size: 0.9375rem;
+      line-height: 1.4;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .btn-secondary {
+      background-color: var(--secondary);
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background-color: var(--secondary-dark);
+    }
+    
+    .btn-accent {
+      background-color: var(--accent);
+      color: white;
+    }
+    
+    .btn-accent:hover {
+      background-color: #e55d00;
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform var(--anim-fast) ease;
+    }
+    
+    .btn-back:hover {
+      transform: translateX(-5px);
+    }
+    
+    .btn-whatsapp {
+      background-color: #25D366;
+      color: white;
+    }
+    
+    .btn-whatsapp:hover {
+      background-color: #128C7E;
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: var(--primary);
+      color: white;
+      padding: 1.5rem 0;
+      margin-top: 3rem;
+    }
+    
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .footer-copyright {
+      font-size: 0.875rem;
+      opacity: 0.8;
+    }
+    
+    /* Estados vacíos y mensajes */
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      background-color: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .empty-icon {
+      font-size: 3rem;
+      color: var(--gray-400);
+      margin-bottom: 1.5rem;
+    }
+    
+    .empty-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 1rem;
+    }
+    
+    .empty-text {
+      color: var(--gray-600);
+      max-width: 500px;
+      margin: 0 auto 1.5rem;
+    }
+    
+    /* Alertas */
+    .alert {
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .alert-icon {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+    
+    .alert-content {
+      flex-grow: 1;
+    }
+    
+    .alert-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .alert-info {
+      background-color: rgba(0, 145, 255, 0.1);
+      color: var(--secondary-dark);
+    }
+    
+    .alert-error {
+      background-color: rgba(244, 67, 54, 0.1);
+      color: var(--error);
+    }
+    
+    /* Esqueletos de carga */
+    .skeleton-loader {
+      background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-300) 50%, var(--gray-200) 75%);
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.5s infinite;
+      border-radius: var(--radius-sm);
+    }
+    
+    .skeleton-card {
+      background-color: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      height: 100%;
+    }
+    
+    .skeleton-image {
+      height: 160px;
+      width: 100%;
+    }
+    
+    .skeleton-content {
+      padding: 1.25rem;
+    }
+    
+    .skeleton-title {
+      height: 1.25rem;
+      width: 80%;
+      margin-bottom: 1rem;
+    }
+    
+    .skeleton-text {
+      height: 0.875rem;
+      width: 60%;
+      margin-bottom: 0.75rem;
+    }
+    
+    .skeleton-text:last-child {
+      width: 40%;
+    }
+    
+    .skeleton-button {
+      height: 2.5rem;
+      width: 100%;
+      margin-top: 1rem;
+      border-radius: var(--radius-md);
+    }
+    
+    @keyframes skeleton-loading {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .main-container {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        max-width: 100%;
+        order: 2;
+      }
+      
+      .content-area {
+        order: 1;
+      }
+      
+      .job-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .job-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
+      }
+      
+      .job-salary {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 1rem;
+        display: inline-block;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .branch-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+      }
+      
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .job-actions {
+        flex-direction: column;
+      }
+      
+      .job-actions .btn {
+        width: 100%;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .search-form {
+        flex-direction: column;
+      }
+      
+      .search-form .btn {
+        width: 100%;
+      }
+      
+      .job-meta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .job-meta-item {
+        width: 100%;
+      }
+    }
+    
+    /* Botón flotante para WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #25D366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: var(--shadow-lg);
+      z-index: 99;
+      transition: all var(--anim-normal) ease;
+    }
+    
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
-
-<!-- Encabezado -->
-<header>
-  <div class="container">
-    <img src="logo.png" alt="Aceros del Pacífico" class="logo">
+  <!-- Cargador inicial -->
+  <div id="app-loader">
+    <div class="logo-pulse">
+      <img src="logo-icon.png" alt="Aceros del Pacífico" width="30" height="30" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' width=\'30\' height=\'30\'%3E%3Cpath fill=\'%230d1c59\' d=\'M12 2L1 21h22L12 2zm0 4l7.5 13h-15L12 6z\'/%3E%3C/svg%3E';">
+    </div>
   </div>
-</header>
 
-</header>
-    <section class="intro">
-        <div class="container">
-            <p>Bienvenido a nuestra página de vacantes.</p> 
-            <p>¡Forma parte de nuestro equipo!</p>
-            <p>Te estamos buscando.</p>
-             <!-- <p>¡Únete a nuestro equipo!</p>  -->
-        </div>
-    </section>
-<!-- Contenido principal -->
-<section class="pagina">
-  <div class="contenido">
-    <!-- Aquí se mostrarán las sucursales o las vacantes -->
-    <div class="sucursales"></div>
-  </div>
-  <div class="formulario-container">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfvc46ghK_Q_vjDVg3EMF168umEyoHd5dSTVbvGOzF0i7qe9Q/viewform?embedded=true" width="100%" height="1316" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
-  </div>
-</section>
+  <!-- Cabecera -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="header-title">Aceros del Pacífico</div>
+      <div class="header-actions">
+        <a href="https://wa.me/526682191668" class="btn btn-secondary" target="_blank">
+          <i class="fab fa-whatsapp"></i> Contactar
+        </a>
+      </div>
+    </div>
+  </header>
 
-<!-- Información de contacto -->
-<section class="informacion-contacto">
-  <div class="info-item">
-    <i class="fas fa-phone tooltip-icon"></i>
-    <span class="tooltip-text">Persona de contacto: <strong>Jorge Félix</strong><br>Teléfono: 6882191668 (Únicamente llamadas).</span>
-  </div>
-  <div class="info-item">
-    <i class="fas fa-clock tooltip-icon"></i>
-    <span class="tooltip-text">Horarios de trabajo:<br>Lunes a viernes, 8 a.m. - 1 p.m. y 2:30 p.m. - 6 p.m.<br>Sábados, 8 a.m. - 1:30 p.m.</span>
-  </div>
-  <div class="info-item">
-    <i class="fas fa-file-alt tooltip-icon"></i>
-    <span class="tooltip-text">Documentación principal:<br>Solicitud de empleo / Currículum vitae<br>Identificación oficial - Vigente<br>Comprobante de domicilio<br>Número de Seguridad Social<br>Constancia de Situación Fiscal</span>
-  </div>
-</section>
+  <!-- Hero banner -->
+  <section class="hero">
+    <div class="container hero-container">
+      <p>Descubre las oportunidades laborales en Aceros del Pacífico y sé parte de nuestro crecimiento.</p>
+    </div>
+  </section>
 
-<!-- Footer -->
-<footer>
-  <div class="container">
-    <p>© 2024 Aceros del Pacífico. Todos los derechos reservados.</p>
-  </div>
-</footer>
-
-<!-- Modal de carga -->
-<div id="loaderModal">
-  <div class="loader-content">
-    <div class="spinner"></div>
-    <p>Cargando vacantes...</p>
-  </div>
-</div>
-
-<!-- Scripts -->
-<script>
-  // Función para cargar las sucursales y vacantes según el hash en la URL
-  async function cargarContenido() {
-    const url = 'https://script.google.com/macros/s/AKfycbzXKwp9Y7JfdpkIlFKZGxuB84mD2UjffR5y0viXQiI4_QxXOUKIkw3jSSD-0aQ3dmYZ/exec';
-    const contenidoContainer = document.querySelector('.sucursales');
-    contenidoContainer.innerHTML = ''; // Limpiar cualquier contenido anterior
-
-    const loaderModal = document.getElementById('loaderModal');
-    loaderModal.classList.remove('hidden'); // Mostrar el modal
-
-    let vacantes = sessionStorage.getItem('vacantes');
-    if (vacantes) {
-      vacantes = JSON.parse(vacantes);
-      procesarVacantes(vacantes);
-      loaderModal.classList.add('hidden'); // Ocultar el modal cuando se cargan las vacantes
-    } else {
-      try {
-        const response = await fetch(url);
-        vacantes = await response.json();
-        sessionStorage.setItem('vacantes', JSON.stringify(vacantes));
-        procesarVacantes(vacantes);
-        loaderModal.classList.add('hidden'); // Ocultar el modal cuando se cargan las vacantes
-      } catch (error) {
-        console.error('Error al cargar el contenido:', error);
-        contenidoContainer.innerHTML = '<p>Error al cargar el contenido. Inténtalo más tarde.</p>';
-        loaderModal.classList.add('hidden'); // Ocultar el modal en caso de error
-      }
-    }
-  }
-
-    // Función para procesar y mostrar las vacantes según el hash
-  function procesarVacantes(vacantes) {
-    const hash = window.location.hash; // Obtener el hash de la URL (#sucursal)
-    const contenidoContainer = document.querySelector('.sucursales');
-
-    if (!hash || hash === '#') {
-      // Si no hay hash o es vacío, mostrar las sucursales
-      mostrarSucursales(vacantes, contenidoContainer);
-    } else {
-      // Si hay un hash (#sucursal), mostrar las vacantes para esa sucursal
-      const sucursal = decodeURIComponent(hash.substring(1)); // Eliminar el '#' y decodificar el valor
-      mostrarVacantes(vacantes, sucursal, contenidoContainer);
-    }
-  }
-
-  // Función para mostrar las sucursales
-  function mostrarSucursales(vacantes, container) {
-    const sucursales = {};
-
-    // Agrupar las vacantes por sucursal
-    vacantes.forEach(vacante => {
-      if (!sucursales[vacante.sucursal]) {
-        sucursales[vacante.sucursal] = [];
-      }
-      sucursales[vacante.sucursal].push(vacante);
-    });
-
-    container.innerHTML = ''; // Limpiar el contenedor antes de agregar las sucursales
-
-    // Crear los enlaces para cada sucursal
-    for (const sucursal in sucursales) {
-      const sucursalDiv = document.createElement('div');
-      sucursalDiv.classList.add('sucursal');
-
-      // Crear una tarjeta de la sucursal
-      sucursalDiv.innerHTML = `
-        <div class="sucursal-card">
-          <img src="${sucursal}.jpg" alt="${sucursal}" class="sucursal-img" loading="lazy" onerror="this.onerror=null; this.src='default-sucursal.jpg';">
-          <div class="sucursal-info">
-            <h2>${sucursal}</h2>
-            <p>Haz clic para descubrir las vacantes en esta sucursal.</p>
-            <a href="#${encodeURIComponent(sucursal)}" class="cta-button">Ver Vacantes</a>
+  <!-- Contenido principal -->
+  <main class="main-content">
+    <div class="container">
+      <div class="main-container">
+        <!-- Área de contenido principal -->
+        <div class="content-area">
+          <!-- Buscador -->
+          <div class="search-box">
+            <form class="search-form" id="search-form">
+              <input type="text" id="search-input" class="search-input" placeholder="Buscar vacantes o sucursales...">
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-search"></i> Buscar
+              </button>
+            </form>
+          </div>
+          
+          <!-- Contenido dinámico (sucursales/vacantes) -->
+          <div id="main-container">
+            <!-- Título de sección -->
+            <h2 class="section-title">Nuestras sucursales</h2>
+            
+            <!-- Contenedor donde se cargarán las sucursales o vacantes -->
+            <div id="dynamic-content">
+              <!-- Esqueletos de carga -->
+              <div class="branch-grid" id="skeleton-grid">
+                <!-- Se generarán dinámicamente -->
+              </div>
+            </div>
           </div>
         </div>
-      `;
+        
+        <!-- Barra lateral con formulario -->
+        <div class="sidebar">
+          <div class="form-container">
+            <h2 class="form-title">Postúlate ahora</h2>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfvc46ghK_Q_vjDVg3EMF168umEyoHd5dSTVbvGOzF0i7qe9Q/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sección de información de contacto -->
+      <section class="info-section">
+        <h2 class="info-title">Información importante</h2>
+        <div class="info-grid">
+          <div class="info-card">
+            <div class="info-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <h3 class="info-card-title">Contacto</h3>
+            <div class="info-text">
+              <p><strong>Jorge Félix</strong></p>
+              <p>Teléfono: 6682191668</p>
+              <p>(Únicamente llamadas)</p>
+            </div>
+          </div>
+          
+          <div class="info-card">
+            <div class="info-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h3 class="info-card-title">Horarios</h3>
+            <div class="info-text">
+              <p>Lunes a viernes:</p>
+              <p>8:00 a.m. - 1:00 p.m.</p>
+              <p>2:30 p.m. - 6:00 p.m.</p>
+              <p>Sábados: 8:00 a.m. - 1:30 p.m.</p>
+            </div>
+          </div>
+          
+          <div class="info-card">
+            <div class="info-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <h3 class="info-card-title">Documentación</h3>
+            <div class="info-text">
+              <p>• Solicitud de empleo / CV</p>
+              <p>• Identificación oficial vigente</p>
+              <p>• Comprobante de domicilio</p>
+              <p>• Número de Seguridad Social</p>
+              <p>• Constancia de Situación Fiscal</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
 
-      container.appendChild(sucursalDiv);
-    }
-  }
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-copyright">
+        © 2024 Aceros del Pacífico. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
 
-  // Función para mostrar las vacantes de una sucursal
-  function mostrarVacantes(vacantes, sucursalSeleccionada, container) {
-    const vacantesUnicas = {};
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/526682191668" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
-    vacantes.forEach(vacante => {
-      const clave = `${vacante.sucursal}-${vacante.puesto}`;
-      if (!vacantesUnicas[clave]) {
-        vacantesUnicas[clave] = vacante; // Evitar duplicados
-      }
-    });
-
-    const vacantesFiltradas = Object.values(vacantesUnicas).filter(v => v.sucursal === sucursalSeleccionada);
-
-    container.innerHTML = ''; // Limpiar el contenedor antes de agregar vacantes
-
-    if (vacantesFiltradas.length > 0) {
-
-      vacantesFiltradas.forEach(vacante => {
-        const vacanteDiv = document.createElement('div');
-        vacanteDiv.classList.add('vacante');
-
-        // Generar enlace de WhatsApp
-        const telefonoWhatsApp = '526682191668'; // Asegúrate de incluir el código de país
-        const mensaje = `Estoy interesado en la vacante de ${vacante.puesto}`;
-        const enlaceWhatsApp = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-
-        vacanteDiv.innerHTML = `
-          <img src="${obtenerImagenVacante(vacante.puesto)}" alt="${vacante.puesto}" class="vacante-img" onerror="this.onerror=null; this.src='default.jpg';">
-          <h3>${vacante.puesto}</h3>
-          <p><strong>Salario:</strong> ${formatearSalario(vacante.salario)}</p>
-          <p><strong>Descripción:</strong> ${vacante.descripcion}</p>
-          <a href="${enlaceWhatsApp}" class="cta-button" target="_blank">¡Estoy interesado!</a>
+  <!-- Scripts -->
+  <script>
+    // Configuración
+    const CONFIG = {
+      API_URL: 'https://script.google.com/macros/s/AKfycbzXKwp9Y7JfdpkIlFKZGxuB84mD2UjffR5y0viXQiI4_QxXOUKIkw3jSSD-0aQ3dmYZ/exec',
+      CACHE_KEY: 'acerosdp_vacantes_cache',
+      CACHE_DURATION: 3600000, // 1 hora en milisegundos
+      APP_VERSION: '1.1.0',
+      DEFAULT_IMAGE: 'default.jpg',
+      DEFAULT_BRANCH_IMAGE: 'default-sucursal.jpg',
+      WHATSAPP_NUMBER: '526882191668'
+    };
+    
+    // Referencias DOM
+    const DOM = {
+      mainContainer: document.getElementById('main-container'),
+      dynamicContent: document.getElementById('dynamic-content'),
+      skeletonGrid: document.getElementById('skeleton-grid'),
+      searchForm: document.getElementById('search-form'),
+      searchInput: document.getElementById('search-input'),
+      appLoader: document.getElementById('app-loader')
+    };
+    
+    // Estado de la aplicación
+    const STATE = {
+      vacantes: [],
+      sucursales: {},
+      cargando: true,
+      error: null
+    };
+    
+    // Utilidades
+    const UTILS = {
+      // Guardar en caché
+      guardarCache: (data) => {
+        try {
+          const cacheData = {
+            timestamp: new Date().getTime(),
+            version: CONFIG.APP_VERSION,
+            data: data
+          };
+          localStorage.setItem(CONFIG.CACHE_KEY, JSON.stringify(cacheData));
+        } catch (error) {
+          console.error('Error al guardar en caché:', error);
+        }
+      },
+      
+      // Obtener de caché
+      obtenerCache: () => {
+        try {
+          const cachedData = localStorage.getItem(CONFIG.CACHE_KEY);
+          if (!cachedData) return null;
+          
+          const { timestamp, version, data } = JSON.parse(cachedData);
+          const ahora = new Date().getTime();
+          
+          // Verificar versión y tiempo
+          if (version !== CONFIG.APP_VERSION || (ahora - timestamp > CONFIG.CACHE_DURATION)) {
+            localStorage.removeItem(CONFIG.CACHE_KEY);
+            return null;
+          }
+          
+          return data;
+        } catch (error) {
+          console.error('Error al obtener de caché:', error);
+          localStorage.removeItem(CONFIG.CACHE_KEY);
+          return null;
+        }
+      },
+      
+      // Formatear salario
+      formatearSalario: (salario) => {
+        if (!salario) return 'Salario no especificado';
+        
+        try {
+          const salarioNum = typeof salario === 'string' ? parseFloat(salario.replace(/[^\d.]/g, '')) : salario;
+          
+          if (isNaN(salarioNum)) return 'Salario no especificado';
+          
+          return new Intl.NumberFormat('es-MX', {
+            style: 'currency',
+            currency: 'MXN',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+          }).format(salarioNum);
+        } catch (e) {
+          console.error('Error al formatear salario:', e);
+          return 'Salario no especificado';
+        }
+      },
+      
+      // Normalizar texto
+      normalizar: (texto) => {
+        if (!texto) return '';
+        
+        return texto.toLowerCase()
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/[^\w-]/g, '');
+      },
+      
+      // Obtener URL de imagen según el puesto
+      obtenerImagenPuesto: (puesto) => {
+        if (!puesto) return CONFIG.DEFAULT_IMAGE;
+        return `${UTILS.normalizar(puesto)}.jpg`;
+      },
+      
+      // Crear mensaje para WhatsApp
+      crearMensajeWhatsApp: (puesto, sucursal) => {
+        return `Hola, estoy interesado en la vacante de ${puesto} en ${sucursal}. ¿Me podrían dar más información?`;
+      },
+      
+      // Crear esqueletos de carga
+      crearEsqueletos: (cantidad = 6) => {
+        DOM.skeletonGrid.innerHTML = '';
+        
+        for (let i = 0; i < cantidad; i++) {
+          const skeleton = document.createElement('div');
+          skeleton.className = 'skeleton-card';
+          
+          skeleton.innerHTML = `
+            <div class="skeleton-loader skeleton-image"></div>
+            <div class="skeleton-content">
+              <div class="skeleton-loader skeleton-title"></div>
+              <div class="skeleton-loader skeleton-text"></div>
+              <div class="skeleton-loader skeleton-text"></div>
+              <div class="skeleton-loader skeleton-button"></div>
+            </div>
+          `;
+          
+          DOM.skeletonGrid.appendChild(skeleton);
+        }
+        
+        DOM.dynamicContent.innerHTML = '';
+        DOM.dynamicContent.appendChild(DOM.skeletonGrid);
+      },
+      
+      // Mostrar error
+      mostrarError: (mensaje) => {
+        DOM.dynamicContent.innerHTML = `
+          <div class="alert alert-error">
+            <div class="alert-icon">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="alert-content">
+              <h3 class="alert-title">Error al cargar los datos</h3>
+              <p>${mensaje}</p>
+              <button class="btn btn-primary mt-3" onclick="CONTROLADOR.cargarDatos()">
+                <i class="fas fa-sync-alt"></i> Reintentar
+              </button>
+            </div>
+          </div>
         `;
-
-        container.appendChild(vacanteDiv);
-      });
-    } else {
-      container.innerHTML = `<p>No hay vacantes disponibles en ${sucursalSeleccionada}</p>`;
-    }
-
-    // Crear el botón de "Volver a la lista de sucursales"
-    const volverButton = document.createElement('button');
-    volverButton.textContent = 'Volver a la lista de sucursales';
-    volverButton.classList.add('volver-button'); // Añadir la clase para estilizar el botón
-
-    // Agregar el botón al contenedor
-    container.insertBefore(volverButton, container.firstChild);
-
-    // Evento para volver a la lista de sucursales cuando se haga clic en el botón
-    volverButton.addEventListener('click', function() {
-      window.location.hash = ''; // Limpiar el hash y volver a la lista de sucursales
-      cargarContenido(); // Recargar el contenido de las sucursales
-    });
-  }
-
-  // Función para obtener la imagen según el puesto
-  function obtenerImagenVacante(puesto) {
-    // Convertir el nombre del puesto a minúsculas, eliminar acentos y caracteres especiales
-    const nombreImagen = puesto.toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Eliminar acentos
-      .replace(/\s+/g, '-') // Reemplazar espacios por guiones
-      .replace(/[^\w-]/g, ''); // Eliminar caracteres que no sean letras, números o guiones
-    return `${nombreImagen}.jpg`; // Ruta donde se almacenan las imágenes
-  }
-
-  // Función para formatear el salario como moneda sin decimales
-  function formatearSalario(salario) {
-    return new Intl.NumberFormat('es-MX', {
-      style: 'currency',
-      currency: 'MXN',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
-    }).format(salario);
-  }
-
-  // Cargar el contenido cuando la página se cargue o cambie el hash
-  document.addEventListener('DOMContentLoaded', cargarContenido);
-  window.addEventListener('hashchange', cargarContenido); // Recargar contenido al cambiar el hash
-</script>
+      },
+      
+      // Mostrar estado vacío
+      mostrarEstadoVacio: (mensaje, titulo = "No se encontraron resultados") => {
+        return `
+          <div class="empty-state">
+            <div class="empty-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3 class="empty-title">${titulo}</h3>
+            <p class="empty-text">${mensaje}</p>
+            ${window.location.hash ? `
+              <button class="btn btn-primary" onclick="window.location.hash = ''">
+                <i class="fas fa-arrow-left"></i> Volver a sucursales
+              </button>
+            ` : ''}
+          </div>
+        `;
+      }
+    };
+    
+    // Vistas
+    const VISTAS = {
+      // Renderizar sucursales
+      renderizarSucursales: (sucursales) => {
+        if (!sucursales || Object.keys(sucursales).length === 0) {
+          return UTILS.mostrarEstadoVacio(
+            "No hay sucursales con vacantes disponibles en este momento. Por favor, inténtalo más tarde.",
+            "No hay sucursales disponibles"
+          );
+        }
+        
+        let html = '<div class="branch-grid">';
+        
+        Object.keys(sucursales).forEach(nombreSucursal => {
+          const vacantes = sucursales[nombreSucursal];
+          const cantidadVacantes = vacantes.length;
+          
+          html += `
+            <div class="branch-card">
+              <div class="branch-image">
+                <img src="${nombreSucursal}.jpg" alt="${nombreSucursal}" loading="lazy" onerror="this.onerror=null; this.src='${CONFIG.DEFAULT_BRANCH_IMAGE}';">
+                <div class="branch-vacancies-badge">${cantidadVacantes} vacante${cantidadVacantes !== 1 ? 's' : ''}</div>
+              </div>
+              <div class="branch-content">
+                <h3 class="branch-title">${nombreSucursal}</h3>
+                <div class="branch-meta">
+                  <div class="branch-meta-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Sucursal</span>
+                  </div>
+                  <div class="branch-meta-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>${cantidadVacantes} puesto${cantidadVacantes !== 1 ? 's' : ''} disponible${cantidadVacantes !== 1 ? 's' : ''}</span>
+                  </div>
+                </div>
+                <div class="branch-footer">
+                  <a href="#${encodeURIComponent(nombreSucursal)}" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-eye"></i> Ver vacantes
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        
+        html += '</div>';
+        return html;
+      },
+      
+      // Renderizar vacantes
+      renderizarVacantes: (vacantes, sucursal) => {
+        if (!vacantes || vacantes.length === 0) {
+          return UTILS.mostrarEstadoVacio(
+            `No hay vacantes disponibles en ${sucursal} en este momento. Por favor, consulta otras sucursales o inténtalo más tarde.`,
+            `No hay vacantes en ${sucursal}`
+          );
+        }
+        
+        let html = `
+          <div class="btn-back" onclick="window.location.hash = ''">
+            <i class="fas fa-arrow-left"></i> Volver a sucursales
+          </div>
+          
+          <h2 class="section-title">Vacantes en ${sucursal}</h2>
+        `;
+        
+        vacantes.forEach(vacante => {
+          const mensajeWhatsApp = UTILS.crearMensajeWhatsApp(vacante.puesto, vacante.sucursal);
+          const enlaceWhatsApp = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(mensajeWhatsApp)}`;
+          
+          html += `
+            <div class="job-card">
+              <div class="job-header">
+                <div class="job-image">
+                  <img src="${UTILS.obtenerImagenPuesto(vacante.puesto)}" alt="${vacante.puesto}" loading="lazy" onerror="this.onerror=null; this.src='${CONFIG.DEFAULT_IMAGE}';">
+                </div>
+                <div class="job-title-area">
+                  <h3 class="job-title">${vacante.puesto}</h3>
+                  <div class="job-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${vacante.sucursal}</span>
+                  </div>
+                </div>
+                <div class="job-salary">
+                  ${UTILS.formatearSalario(vacante.salario)}
+                </div>
+              </div>
+              
+              <div class="job-body">
+                <div class="job-description">
+                  <p>${vacante.descripcion || 'No hay descripción disponible para este puesto.'}</p>
+                </div>
+                
+                <div class="job-meta">
+                  <div class="job-meta-item">
+                    <i class="fas fa-building"></i>
+                    <span>Aceros del Pacífico</span>
+                  </div>
+                  <div class="job-meta-item">
+                    <i class="fas fa-map-pin"></i>
+                    <span>${vacante.sucursal}</span>
+                  </div>
+                  <div class="job-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Tiempo completo</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="job-actions">
+                <a href="${enlaceWhatsApp}" class="btn btn-whatsapp" target="_blank">
+                  <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                </a>
+                <button class="btn btn-outline" onclick="document.querySelector('.form-container').scrollIntoView({behavior: 'smooth'})">
+                  <i class="fas fa-paper-plane"></i> Postularme ahora
+                </button>
+              </div>
+            </div>
+          `;
+        });
+        
+        return html;
+      },
+      
+      // Renderizar resultados de búsqueda
+      renderizarResultados: (resultados, termino) => {
+        if (!resultados || resultados.length === 0) {
+          return `
+            <div class="btn-back" onclick="window.location.hash = ''">
+              <i class="fas fa-arrow-left"></i> Volver a sucursales
+            </div>
+            
+            ${UTILS.mostrarEstadoVacio(
+              `No se encontraron vacantes que coincidan con "${termino}". Intenta con otro término de búsqueda o explora todas las sucursales.`,
+              'Sin resultados'
+            )}
+          `;
+        }
+        
+        let html = `
+          <div class="btn-back" onclick="window.location.hash = ''">
+            <i class="fas fa-arrow-left"></i> Volver a sucursales
+          </div>
+          
+          <div class="alert alert-info mb-4">
+            <div class="alert-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <div class="alert-content">
+              <h3 class="alert-title">Resultados de búsqueda</h3>
+              <p>Se encontraron ${resultados.length} resultado${resultados.length !== 1 ? 's' : ''} para "${termino}"</p>
+            </div>
+          </div>
+        `;
+        
+        resultados.forEach(vacante => {
+          const mensajeWhatsApp = UTILS.crearMensajeWhatsApp(vacante.puesto, vacante.sucursal);
+          const enlaceWhatsApp = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(mensajeWhatsApp)}`;
+          
+          html += `
+            <div class="job-card">
+              <div class="job-header">
+                <div class="job-image">
+                  <img src="${UTILS.obtenerImagenPuesto(vacante.puesto)}" alt="${vacante.puesto}" loading="lazy" onerror="this.onerror=null; this.src='${CONFIG.DEFAULT_IMAGE}';">
+                </div>
+                <div class="job-title-area">
+                  <h3 class="job-title">${vacante.puesto}</h3>
+                  <div class="job-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${vacante.sucursal}</span>
+                  </div>
+                </div>
+                <div class="job-salary">
+                  ${UTILS.formatearSalario(vacante.salario)}
+                </div>
+              </div>
+              
+              <div class="job-body">
+                <div class="job-description">
+                  <p>${vacante.descripcion || 'No hay descripción disponible para este puesto.'}</p>
+                </div>
+                
+                <div class="job-meta">
+                  <div class="job-meta-item">
+                    <i class="fas fa-building"></i>
+                    <span>Aceros del Pacífico</span>
+                  </div>
+                  <div class="job-meta-item">
+                    <i class="fas fa-map-pin"></i>
+                    <span>${vacante.sucursal}</span>
+                  </div>
+                  <div class="job-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Tiempo completo</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="job-actions">
+                <a href="${enlaceWhatsApp}" class="btn btn-whatsapp" target="_blank">
+                  <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                </a>
+                <button class="btn btn-outline" onclick="document.querySelector('.form-container').scrollIntoView({behavior: 'smooth'})">
+                  <i class="fas fa-paper-plane"></i> Postularme ahora
+                </button>
+              </div>
+            </div>
+          `;
+        });
+        
+        return html;
+      }
+    };
+    
+    // Controlador principal
+    const CONTROLADOR = {
+      // Inicializar
+      iniciar: () => {
+        // Mostrar esqueletos de carga
+        UTILS.crearEsqueletos();
+        
+        // Cargar datos
+        CONTROLADOR.cargarDatos();
+        
+        // Configurar eventos
+        window.addEventListener('hashchange', CONTROLADOR.manejarCambioHash);
+        DOM.searchForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const termino = DOM.searchInput.value.trim();
+          if (termino) {
+            CONTROLADOR.buscar(termino);
+          }
+        });
+        
+        // Eventos de conexión
+        window.addEventListener('online', () => {
+          if (STATE.error) {
+            CONTROLADOR.cargarDatos();
+          }
+        });
+        
+        window.addEventListener('offline', () => {
+          if (STATE.cargando && !UTILS.obtenerCache()) {
+            UTILS.mostrarError('No hay conexión a internet. Conéctate para ver las vacantes disponibles.');
+            STATE.cargando = false;
+            STATE.error = 'Sin conexión';
+          }
+        });
+        
+        // Ocultar loader inicial
+        setTimeout(() => {
+          DOM.appLoader.style.opacity = '0';
+          setTimeout(() => {
+            DOM.appLoader.style.display = 'none';
+          }, 500);
+        }, 1000);
+      },
+      
+      // Cargar datos
+      cargarDatos: async () => {
+        STATE.cargando = true;
+        STATE.error = null;
+        
+        UTILS.crearEsqueletos();
+        
+        try {
+          // Intentar obtener datos de caché
+          let vacantes = UTILS.obtenerCache();
+          
+          if (!vacantes) {
+            // Si no hay caché, obtener de la API
+            const response = await fetch(CONFIG.API_URL);
+            if (!response.ok) {
+              throw new Error(`Error del servidor: ${response.status}`);
+            }
+            
+            vacantes = await response.json();
+            
+            // Guardar en caché
+            UTILS.guardarCache(vacantes);
+          }
+          
+          // Procesar vacantes
+          CONTROLADOR.procesarVacantes(vacantes);
+        } catch (error) {
+          console.error('Error al cargar datos:', error);
+          STATE.error = error.message || 'Error desconocido';
+          STATE.cargando = false;
+          
+          UTILS.mostrarError('No se pudieron cargar las vacantes. Por favor, inténtalo más tarde.');
+        }
+      },
+      
+      // Procesar vacantes
+      procesarVacantes: (vacantes) => {
+        STATE.vacantes = vacantes;
+        STATE.sucursales = {};
+        
+        // Agrupar por sucursal
+        vacantes.forEach(vacante => {
+          if (!STATE.sucursales[vacante.sucursal]) {
+            STATE.sucursales[vacante.sucursal] = [];
+          }
+          
+          // Evitar duplicados
+          const existe = STATE.sucursales[vacante.sucursal].some(
+            v => v.puesto === vacante.puesto
+          );
+          
+          if (!existe) {
+            STATE.sucursales[vacante.sucursal].push(vacante);
+          }
+        });
+        
+        STATE.cargando = false;
+        
+        // Renderizar según hash
+        CONTROLADOR.manejarCambioHash();
+      },
+      
+      // Manejar cambios de hash
+      manejarCambioHash: () => {
+        const hash = window.location.hash;
+        
+        if (STATE.cargando) {
+          return; // No hacer nada si aún está cargando
+        }
+        
+        if (!hash || hash === '#') {
+          // Mostrar sucursales
+          document.querySelector('.section-title').textContent = 'Nuestras sucursales';
+          DOM.dynamicContent.innerHTML = VISTAS.renderizarSucursales(STATE.sucursales);
+        } else {
+          // Mostrar vacantes de la sucursal
+          const sucursal = decodeURIComponent(hash.substring(1));
+          
+          if (STATE.sucursales[sucursal]) {
+            DOM.dynamicContent.innerHTML = VISTAS.renderizarVacantes(
+              STATE.sucursales[sucursal],
+              sucursal
+            );
+          } else {
+            DOM.dynamicContent.innerHTML = UTILS.mostrarEstadoVacio(
+              'No se encontró la sucursal especificada.',
+              'Sucursal no encontrada'
+            );
+          }
+        }
+        
+        // Scroll al inicio
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      },
+      
+      // Buscar vacantes
+      buscar: (termino) => {
+        if (!termino) return;
+        
+        const termBusqueda = termino.toLowerCase();
+        const resultados = [];
+        
+        // Buscar en todas las vacantes
+        STATE.vacantes.forEach(vacante => {
+          const puestoMatch = vacante.puesto && vacante.puesto.toLowerCase().includes(termBusqueda);
+          const sucursalMatch = vacante.sucursal && vacante.sucursal.toLowerCase().includes(termBusqueda);
+          const descripcionMatch = vacante.descripcion && vacante.descripcion.toLowerCase().includes(termBusqueda);
+          
+          if (puestoMatch || sucursalMatch || descripcionMatch) {
+            // Evitar duplicados
+            const existe = resultados.some(
+              r => r.puesto === vacante.puesto && r.sucursal === vacante.sucursal
+            );
+            
+            if (!existe) {
+              resultados.push(vacante);
+            }
+          }
+        });
+        
+        // Mostrar resultados
+        DOM.dynamicContent.innerHTML = VISTAS.renderizarResultados(resultados, termino);
+      }
+    };
+    
+    // Iniciar la aplicación cuando el DOM esté cargado
+    document.addEventListener('DOMContentLoaded', CONTROLADOR.iniciar);
+  </script>
 </body>
 </html>
